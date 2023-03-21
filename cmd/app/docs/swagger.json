@@ -1,0 +1,349 @@
+{
+  "swagger": "2.0",
+  "paths": {
+    "/activity-groups": {
+      "get": {
+        "description": "get all activity",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Activity"
+        ],
+        "operationId": "GetAllActivity",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "query"
+          },
+          {
+            "name": "email",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "post": {
+        "description": "create new activity",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Activity"
+        ],
+        "operationId": "CreateActivity",
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ActivityDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/activity-groups/{id}": {
+      "get": {
+        "description": "get Activity by id",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Activity"
+        ],
+        "operationId": "GetActivityByID",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "Activity id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "delete": {
+        "description": "delete activity",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Activity"
+        ],
+        "operationId": "DeleteActivity",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "Activity id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "patch": {
+        "description": "update activity",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Activity"
+        ],
+        "operationId": "UpdateActivity",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "Activity id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/ActivityDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/todo-items": {
+      "get": {
+        "description": "get all Todo",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Todo"
+        ],
+        "operationId": "GetAllTodo",
+        "parameters": [
+          {
+            "name": "is_active",
+            "in": "query"
+          },
+          {
+            "name": "title",
+            "in": "query"
+          },
+          {
+            "name": "activity_group_id",
+            "in": "query"
+          },
+          {
+            "name": "priority",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "post": {
+        "description": "create new Todo",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Todo"
+        ],
+        "operationId": "CreateTodo",
+        "parameters": [
+          {
+            "name": "Body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/TodoDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/todo-items/{id}": {
+      "get": {
+        "description": "get Todo by id",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Todo"
+        ],
+        "operationId": "GetTodoByID",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "Todo id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "delete": {
+        "description": "delete Todo",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Todo"
+        ],
+        "operationId": "DeleteTodo",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "Todo id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      },
+      "patch": {
+        "description": "update Todo",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "Todo"
+        ],
+        "operationId": "UpdateTodo",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "Todo id",
+            "name": "id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/TodoDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ActivityDto": {
+      "type": "object",
+      "properties": {
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "x-go-name": "CreatedAt"
+        },
+        "email": {
+          "type": "string",
+          "x-go-name": "Email"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Id"
+        },
+        "title": {
+          "type": "string",
+          "x-go-name": "Title"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/muhammadandikakurniawan/golang-todolistapp/src/usecase/activity/model"
+    },
+    "TodoDto": {
+      "type": "object",
+      "properties": {
+        "activity_group_id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "ActivityGroupId"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "x-go-name": "CreatedAt"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "x-go-name": "Id"
+        },
+        "is_active": {
+          "type": "boolean",
+          "x-go-name": "IsActive"
+        },
+        "priority": {
+          "$ref": "#/definitions/TodoPriority"
+        },
+        "title": {
+          "type": "string",
+          "x-go-name": "Title"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time",
+          "x-go-name": "UpdatedAt"
+        }
+      },
+      "x-go-package": "github.com/muhammadandikakurniawan/golang-todolistapp/src/usecase/todo/model"
+    },
+    "TodoPriority": {
+      "type": "string",
+      "x-go-package": "github.com/muhammadandikakurniawan/golang-todolistapp/src/entity"
+    }
+  }
+}
